@@ -23,14 +23,13 @@ func routes(_ app: Application) throws {
             req.logger.error("Headers.RESET_KEY: \(req.headers.first(name: "RESET_KEY") ?? "")")
             throw Abort(.unauthorized)
         }
-        try await Success.query(on: req.db).delete()
-        try await Like.query(on: req.db).delete()
-        try await Level.query(on: req.db).delete()
-        try await User.query(on: req.db).delete()
+        try await Drinks.query(on: req.db).delete()
+        try await Groups.query(on: req.db).delete()
+        try await Consumed.query(on: req.db).delete()
+
         return .ok
     }
 
-    try app.register(collection: RankingController())
-    try app.register(collection: UserController())
-    try app.register(collection: LevelController())
+    try app.register(collection: Controller())
+
 }
