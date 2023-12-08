@@ -11,15 +11,6 @@
 		9B595CBF2B0BE1FF00D8E8D2 /* RankingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B595CBE2B0BE1FF00D8E8D2 /* RankingListView.swift */; };
 		9B595CC12B0BE23500D8E8D2 /* ConsumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B595CC02B0BE23500D8E8D2 /* ConsumeView.swift */; };
 		9B595CC32B0BE27F00D8E8D2 /* GroupSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B595CC22B0BE27F00D8E8D2 /* GroupSettingsView.swift */; };
-		51E619F52B1CB99900E157E1 /* packageDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E619F42B1CB99900E157E1 /* packageDescription.swift */; };
-		51E61A112B1CC21200E157E1 /* Drinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E61A092B1CC21200E157E1 /* Drinks.swift */; };
-		51E61A122B1CC21200E157E1 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E61A0A2B1CC21200E157E1 /* Groups.swift */; };
-		51E61A132B1CC21200E157E1 /* Consumed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E61A0B2B1CC21200E157E1 /* Consumed.swift */; };
-		51E61A142B1CC21200E157E1 /* configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E61A0C2B1CC21200E157E1 /* configure.swift */; };
-		51E61A152B1CC21200E157E1 /* server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E61A0D2B1CC21200E157E1 /* server.swift */; };
-		51E61A162B1CC21200E157E1 /* server_api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E61A0E2B1CC21200E157E1 /* server_api.swift */; };
-		51E61A172B1CC21200E157E1 /* fly.toml in Resources */ = {isa = PBXBuildFile; fileRef = 51E61A0F2B1CC21200E157E1 /* fly.toml */; };
-		51E61A182B1CC21200E157E1 /* routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E61A102B1CC21200E157E1 /* routes.swift */; };
 		9B8903AC2B02B579004D8096 /* Project59App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8903AB2B02B579004D8096 /* Project59App.swift */; };
 		9B8903AE2B02B579004D8096 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8903AD2B02B579004D8096 /* ContentView.swift */; };
 		9B8903B02B02B57B004D8096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B8903AF2B02B57B004D8096 /* Assets.xcassets */; };
@@ -27,19 +18,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B3CAC402B1E47B60076606A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9B595CBC2B0BE1EB00D8E8D2 /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
 		9B595CBE2B0BE1FF00D8E8D2 /* RankingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingListView.swift; sourceTree = "<group>"; };
 		9B595CC02B0BE23500D8E8D2 /* ConsumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeView.swift; sourceTree = "<group>"; };
 		9B595CC22B0BE27F00D8E8D2 /* GroupSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingsView.swift; sourceTree = "<group>"; };
-		51E619F42B1CB99900E157E1 /* packageDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = packageDescription.swift; sourceTree = "<group>"; };
-		51E61A092B1CC21200E157E1 /* Drinks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drinks.swift; sourceTree = "<group>"; };
-		51E61A0A2B1CC21200E157E1 /* Groups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
-		51E61A0B2B1CC21200E157E1 /* Consumed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Consumed.swift; sourceTree = "<group>"; };
-		51E61A0C2B1CC21200E157E1 /* configure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = configure.swift; sourceTree = "<group>"; };
-		51E61A0D2B1CC21200E157E1 /* server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = server.swift; sourceTree = "<group>"; };
-		51E61A0E2B1CC21200E157E1 /* server_api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = server_api.swift; sourceTree = "<group>"; };
-		51E61A0F2B1CC21200E157E1 /* fly.toml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fly.toml; sourceTree = "<group>"; };
-		51E61A102B1CC21200E157E1 /* routes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = routes.swift; sourceTree = "<group>"; };
 		9B8903A82B02B579004D8096 /* Project59.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project59.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8903AB2B02B579004D8096 /* Project59App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project59App.swift; sourceTree = "<group>"; };
 		9B8903AD2B02B579004D8096 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,28 +41,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		51E61A072B1CC21200E157E1 /* server */ = {
-			isa = PBXGroup;
-			children = (
-				51E61A082B1CC21200E157E1 /* Database */,
-				51E61A0C2B1CC21200E157E1 /* configure.swift */,
-				51E61A0D2B1CC21200E157E1 /* server.swift */,
-				51E61A0E2B1CC21200E157E1 /* server_api.swift */,
-				51E61A102B1CC21200E157E1 /* routes.swift */,
-			);
-			path = server;
-			sourceTree = "<group>";
-		};
-		51E61A082B1CC21200E157E1 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				51E61A092B1CC21200E157E1 /* Drinks.swift */,
-				51E61A0A2B1CC21200E157E1 /* Groups.swift */,
-				51E61A0B2B1CC21200E157E1 /* Consumed.swift */,
-			);
-			path = Database;
-			sourceTree = "<group>";
-		};
 		9B89039F2B02B579004D8096 = {
 			isa = PBXGroup;
 			children = (
@@ -99,9 +60,8 @@
 		9B8903AA2B02B579004D8096 /* Project59 */ = {
 			isa = PBXGroup;
 			children = (
-				51E61A072B1CC21200E157E1 /* server */,
+				9B3CAC402B1E47B60076606A /* Info.plist */,
 				9B8903AB2B02B579004D8096 /* Project59App.swift */,
-				51E61A0F2B1CC21200E157E1 /* fly.toml */,
 				9B8903AD2B02B579004D8096 /* ContentView.swift */,
 				9B8903AF2B02B57B004D8096 /* Assets.xcassets */,
 				9B8903B12B02B57B004D8096 /* Preview Content */,
@@ -109,7 +69,6 @@
 				9B595CBE2B0BE1FF00D8E8D2 /* RankingListView.swift */,
 				9B595CC02B0BE23500D8E8D2 /* ConsumeView.swift */,
 				9B595CC22B0BE27F00D8E8D2 /* GroupSettingsView.swift */,
-				51E619F42B1CB99900E157E1 /* packageDescription.swift */,
 			);
 			path = Project59;
 			sourceTree = "<group>";
@@ -181,7 +140,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B8903B32B02B57B004D8096 /* Preview Assets.xcassets in Resources */,
-				51E61A172B1CC21200E157E1 /* fly.toml in Resources */,
 				9B8903B02B02B57B004D8096 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,15 +156,7 @@
 				9B595CBD2B0BE1EB00D8E8D2 /* UserSettingsView.swift in Sources */,
 				9B595CBF2B0BE1FF00D8E8D2 /* RankingListView.swift in Sources */,
 				9B8903AE2B02B579004D8096 /* ContentView.swift in Sources */,
-				51E61A112B1CC21200E157E1 /* Drinks.swift in Sources */,
 				9B8903AC2B02B579004D8096 /* Project59App.swift in Sources */,
-				51E619F52B1CB99900E157E1 /* packageDescription.swift in Sources */,
-				51E61A182B1CC21200E157E1 /* routes.swift in Sources */,
-				51E61A142B1CC21200E157E1 /* configure.swift in Sources */,
-				51E61A162B1CC21200E157E1 /* server_api.swift in Sources */,
-				51E61A152B1CC21200E157E1 /* server.swift in Sources */,
-				51E61A132B1CC21200E157E1 /* Consumed.swift in Sources */,
-				51E61A122B1CC21200E157E1 /* Groups.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +292,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Project59/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Project59/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -370,6 +321,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Project59/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Project59/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
