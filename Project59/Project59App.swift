@@ -10,9 +10,12 @@ import SwiftUI
 
 @main
 struct Project59App: App {
+    @State private var userSettings: UserSettings = UserSettings.shared
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(userSettings)
         }
     }
 }
