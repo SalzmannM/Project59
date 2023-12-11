@@ -8,8 +8,8 @@
 import Foundation
 
 struct Group: Decodable, Identifiable {
-    let id: String
     let group: String
+    let id: String
     let target: Float
     let start: String
     let stop: String

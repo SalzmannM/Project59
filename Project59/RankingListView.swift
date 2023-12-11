@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct RankingListView: View {
+    @Environment(UserSettings.self) private var userSettings
+    
     var body: some View {
         Text("RankingListView")
+        Text(userSettings.groupName)
     }
 }
 
 #Preview {
     RankingListView()
+        .environment(UserSettings.shared)
 }

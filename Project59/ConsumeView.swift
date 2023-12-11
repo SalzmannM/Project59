@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct ConsumeView: View {
+    @Environment(UserSettings.self) private var userSettings
+    
     var body: some View {
+        @Bindable var userSettings = userSettings
+        
         Text("ConsumeView")
+        Text(userSettings.nickName)
     }
 }
 
 #Preview {
     ConsumeView()
+        .environment(UserSettings.shared)
 }
