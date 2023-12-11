@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B223EEE2B2601E00002491B /* Drinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B223EED2B2601E00002491B /* Drinks.swift */; };
-		9B223EF02B26022D0002491B /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B223EEF2B26022D0002491B /* Groups.swift */; };
 		9B223EF32B2606E60002491B /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B223EF22B2606E60002491B /* Networking.swift */; };
 		9B223EF52B2607400002491B /* NetworkingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B223EF42B2607400002491B /* NetworkingModels.swift */; };
 		9B3CAC422B23117A0076606A /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3CAC412B23117A0076606A /* UserSettings.swift */; };
@@ -16,6 +14,7 @@
 		9B595CBF2B0BE1FF00D8E8D2 /* RankingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B595CBE2B0BE1FF00D8E8D2 /* RankingListView.swift */; };
 		9B595CC12B0BE23500D8E8D2 /* ConsumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B595CC02B0BE23500D8E8D2 /* ConsumeView.swift */; };
 		9B595CC32B0BE27F00D8E8D2 /* GroupSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B595CC22B0BE27F00D8E8D2 /* GroupSettingsView.swift */; };
+		9B6F0F582B278877004B57C6 /* DrinkSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F0F572B278877004B57C6 /* DrinkSettingsView.swift */; };
 		9B8903AC2B02B579004D8096 /* Project59App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8903AB2B02B579004D8096 /* Project59App.swift */; };
 		9B8903AE2B02B579004D8096 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8903AD2B02B579004D8096 /* ContentView.swift */; };
 		9B8903B02B02B57B004D8096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B8903AF2B02B57B004D8096 /* Assets.xcassets */; };
@@ -23,8 +22,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9B223EED2B2601E00002491B /* Drinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drinks.swift; sourceTree = "<group>"; };
-		9B223EEF2B26022D0002491B /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		9B223EF22B2606E60002491B /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		9B223EF42B2607400002491B /* NetworkingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingModels.swift; sourceTree = "<group>"; };
 		9B3CAC402B1E47B60076606A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -33,6 +30,7 @@
 		9B595CBE2B0BE1FF00D8E8D2 /* RankingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingListView.swift; sourceTree = "<group>"; };
 		9B595CC02B0BE23500D8E8D2 /* ConsumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeView.swift; sourceTree = "<group>"; };
 		9B595CC22B0BE27F00D8E8D2 /* GroupSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingsView.swift; sourceTree = "<group>"; };
+		9B6F0F572B278877004B57C6 /* DrinkSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkSettingsView.swift; sourceTree = "<group>"; };
 		9B8903A82B02B579004D8096 /* Project59.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project59.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8903AB2B02B579004D8096 /* Project59App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project59App.swift; sourceTree = "<group>"; };
 		9B8903AD2B02B579004D8096 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,15 +49,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9B223EEC2B2601B90002491B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				9B223EED2B2601E00002491B /* Drinks.swift */,
-				9B223EEF2B26022D0002491B /* Groups.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		9B223EF12B2606D80002491B /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				9B223EF12B2606D80002491B /* Network */,
-				9B223EEC2B2601B90002491B /* Model */,
 				9B3CAC402B1E47B60076606A /* Info.plist */,
 				9B8903AB2B02B579004D8096 /* Project59App.swift */,
 				9B8903AD2B02B579004D8096 /* ContentView.swift */,
@@ -100,6 +88,7 @@
 				9B595CC02B0BE23500D8E8D2 /* ConsumeView.swift */,
 				9B595CC22B0BE27F00D8E8D2 /* GroupSettingsView.swift */,
 				9B3CAC412B23117A0076606A /* UserSettings.swift */,
+				9B6F0F572B278877004B57C6 /* DrinkSettingsView.swift */,
 			);
 			path = Project59;
 			sourceTree = "<group>";
@@ -186,13 +175,12 @@
 				9B223EF52B2607400002491B /* NetworkingModels.swift in Sources */,
 				9B223EF32B2606E60002491B /* Networking.swift in Sources */,
 				9B595CC32B0BE27F00D8E8D2 /* GroupSettingsView.swift in Sources */,
-				9B223EEE2B2601E00002491B /* Drinks.swift in Sources */,
 				9B3CAC422B23117A0076606A /* UserSettings.swift in Sources */,
+				9B6F0F582B278877004B57C6 /* DrinkSettingsView.swift in Sources */,
 				9B595CBD2B0BE1EB00D8E8D2 /* UserSettingsView.swift in Sources */,
 				9B595CBF2B0BE1FF00D8E8D2 /* RankingListView.swift in Sources */,
 				9B8903AE2B02B579004D8096 /* ContentView.swift in Sources */,
 				9B8903AC2B02B579004D8096 /* Project59App.swift in Sources */,
-				9B223EF02B26022D0002491B /* Groups.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

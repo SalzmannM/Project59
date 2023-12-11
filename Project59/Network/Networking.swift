@@ -10,51 +10,49 @@ import Foundation
 @Observable class Networking {
     static let shared = Networking()
     
-    var groups: GroupsResponse?
+    var groups: [Group]?
     
-    var drinks: DrinksResponse?
+    var drinks: [Drink]?
     
     private let baseUrl = URL(string: "https://vapor-server59.fly.dev/")!
     
     func loadGroups() async throws {
         let url = baseUrl.appendingPathComponent("group")
         let data = try await URLSession.shared.data(from: url)
-        groups = try JSONDecoder().decode(GroupsResponse.self, from: data.0)
+        groups = try JSONDecoder().decode([Group].self, from: data.0)
     }
     
     func loadDrinks() async throws {
         let url = baseUrl.appendingPathComponent("drink")
         let data = try await URLSession.shared.data(from: url)
-        drinks = try JSONDecoder().decode(DrinksResponse.self, from: data.0)
+        drinks = try JSONDecoder().decode([Drink].self, from: data.0)
     }
     
     
-    func sendGroup(_ group: Groups) async throws {
+    func sendGroup(group: String, target: Float, start: Date, stop: Date) async throws {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
         let url = baseUrl.appendingPathComponent("group")
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
-        let groupname = group.group
-        let target = group.target
-        let starttime = group.starttime
-        let stoptime = group.stoptime
-        let body = GroupUpdate(group: groupname, target: target, start: starttime, stop: stoptime)
+        let body = GroupUpdate(group: group, target: target, start: dateFormatter.string(from: start), stop: dateFormatter.string(from: stop))
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         request.httpBody = try JSONEncoder().encode(body)
+        
         _ = try await URLSession.shared.data(for: request)
         
     }
     
-    func sendDrink(_ drink: Drinks) async throws {
+    func sendDrink(_ drink: String, weight: Float, group: String) async throws {
         let url = baseUrl.appendingPathComponent("drink")
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
-        let drinkname = drink.drink
-        let weight = drink.weight
-        let group = drink.group
-        let body = DrinkUpdate(group: group, drink: drinkname, weight: weight)
+        let body = DrinkUpdate(group: group, drink: drink, weight: weight)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         request.httpBody = try JSONEncoder().encode(body)

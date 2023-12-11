@@ -11,6 +11,7 @@ struct UserSettingsView: View {
     @Environment(UserSettings.self) private var userSettings
     
     @State var networking = Networking.shared
+    @State var errorMessage: String?
     
     var body: some View {
         @Bindable var userSettings = userSettings
@@ -22,9 +23,12 @@ struct UserSettingsView: View {
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     TextField("Username", text: $userSettings.nickName)
                     HStack {
-                        if let groups = networking.groups {
+                        if let errorMessage {
+                            Label(errorMessage, systemImage: "exclamationmark.triangle")
+                        }
+                        else if let groups = networking.groups {
                             Picker("Select a group", selection: $userSettings.groupName) {
-                                ForEach(groups.groups) { group in
+                                ForEach(groups) { group in
                                     Text(group.group)
                                 }
                             }
@@ -48,6 +52,22 @@ struct UserSettingsView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .shadow(color: .black.opacity(0.3), radius: 5)
                 .padding()
+                .task {
+                    do {
+                        try await networking.loadGroups()
+                    }
+                    catch {
+                        errorMessage = error.localizedDescription
+                    }
+                }
+                .refreshable {
+                    do {
+                        try await networking.loadGroups()
+                    }
+                    catch {
+                        errorMessage = error.localizedDescription
+                    }
+                }
             }
             .navigationTitle("Settings")
         }

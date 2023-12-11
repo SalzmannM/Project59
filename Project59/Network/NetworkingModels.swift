@@ -8,11 +8,11 @@
 import Foundation
 
 struct Group: Decodable, Identifiable {
+    let id: String
     let group: String
     let target: Float
-    let starttime: Date
-    let stoptime: Date
-    let id: UUID
+    let start: String
+    let stop: String
 }
 
 struct Drink: Decodable, Identifiable {
@@ -22,23 +22,15 @@ struct Drink: Decodable, Identifiable {
     let id: UUID
 }
 
-struct GroupsResponse: Decodable {
-    let groups: [Group]
-}
 
-struct DrinksResponse: Decodable {
-    let drinks: [Drink]
-}
-
-
-struct GroupUpdate: Encodable {
+struct GroupUpdate: Decodable, Encodable {
     let group: String
     let target: Float
-    let start: Date
-    let stop: Date
+    let start: String
+    let stop: String
 }
 
-struct DrinkUpdate: Encodable {
+struct DrinkUpdate: Decodable, Encodable {
     let group: String
     let drink: String
     let weight: Float

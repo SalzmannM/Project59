@@ -8,54 +8,51 @@
 import SwiftUI
 
 struct GroupSettingsView: View {
-    @State var group:Groups
-    @State var drinks:[Drinks]
-    @State var errorMessage: String?
+    @State var groupname: String = ""
+    @State var target: Float = 0
+    @State var start: Date = Date.now
+    @State var stop: Date = Date.now
+    @State var drinkslist:[DrinkSettingsView] = []
+    @State var errorMessage: String = ""
+    @State var drinkname: String = ""
+    @State var weight: Float = 0
     
     @State var networking = Networking.shared
     
-    func saveGroup() async {
-        await saveNewGroup()
-        await saveDrinks()
-    }
     
-    func saveNewGroup() async {
-        do {
-            try await networking.sendGroup(group)
-        }
-        catch {
-            errorMessage = error.localizedDescription
-        }
-        print("now it should be saved")
-    }
-    
-    func saveDrinks() async {
-        ForEach(drinks) { drink in
+    func saveGroup() {
+        Task {
             do {
-                try await networking.sendDrink(drink)
+                try await networking.sendGroup(group: groupname, target: target, start: start, stop: stop)
             }
             catch {
-                errorMessage = error.localizedDescription
+                self.errorMessage = error.localizedDescription
             }
         }
-        print("now it should be saved")
+        
+        drinkslist.forEach { drinkAdd in
+            Task {
+                await drinkAdd.saveDrink(group: $groupname.wrappedValue)
+            }
+        }
     }
     
     var body: some View {
         ScrollView {
             VStack {
+                Text(errorMessage)
                 Text("Group Settings")
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                TextField("Groupname", text: $group.group)
-                TextField("Target", value: $group.target, format: .number)
+                TextField("Groupname", text: $groupname)
+                TextField("Target", value: $target, format: .number)
                 DatePicker(
                     "Start Time",
-                    selection: $group.starttime,
+                    selection: $start,
                     displayedComponents: [.date]
                 )
                 DatePicker(
                     "Stop Time",
-                    selection: $group.stoptime,
+                    selection: $stop,
                     displayedComponents: [.date]
                 )
             }
@@ -67,14 +64,16 @@ struct GroupSettingsView: View {
             .padding()
             
             VStack {
-                Text("Drink Counter")
+                Text("Available Drinks")
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 VStack {
-                    List {
-                        ForEach($drinks) { drink in
-                            TextField("Drink", text: drink.drink)
-                            TextField("Weight", value: drink.weight, format: .number)
-                        }
+                    List(drinkslist, id: \.id) { drink in
+                        drink
+                    }
+                    TextField("Drink", text: $drinkname)
+                    TextField("Weight", value: $weight, format: .number)
+                    Button("Add") {
+                        drinkslist.append(DrinkSettingsView(drinkname: $drinkname.wrappedValue, weight: $weight.wrappedValue))
                     }
                 }
                 .frame(minWidth: 150, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
