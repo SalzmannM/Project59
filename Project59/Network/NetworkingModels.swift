@@ -31,15 +31,15 @@ struct DrinksResponse: Decodable {
 }
 
 
-struct AddGroupRequestBody: Encodable {
+struct GroupUpdate: Encodable {
     let group: String
     let target: Float
-    let starttime: Date
-    let stoptime: Date
+    let start: Date
+    let stop: Date
 }
 
-struct AddDrinkRequestBody: Encodable {
+struct DrinkUpdate: Encodable {
+    let group: String
     let drink: String
     let weight: Float
-    let group: String
 }

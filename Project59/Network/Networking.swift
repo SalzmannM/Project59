@@ -14,7 +14,7 @@ import Foundation
     
     var drinks: DrinksResponse?
     
-    private let baseUrl = URL(string: "https://66.241.124.102:8080/")!
+    private let baseUrl = URL(string: "https://vapor-server59.fly.dev/")!
     
     func loadGroups() async throws {
         let url = baseUrl.appendingPathComponent("group")
@@ -38,7 +38,7 @@ import Foundation
         let target = group.target
         let starttime = group.starttime
         let stoptime = group.stoptime
-        let body = AddGroupRequestBody(group: groupname, target: target, starttime: starttime, stoptime: stoptime)
+        let body = GroupUpdate(group: groupname, target: target, start: starttime, stop: stoptime)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         request.httpBody = try JSONEncoder().encode(body)
@@ -54,7 +54,7 @@ import Foundation
         let drinkname = drink.drink
         let weight = drink.weight
         let group = drink.group
-        let body = AddDrinkRequestBody(drink: drinkname, weight: weight, group: group)
+        let body = DrinkUpdate(group: group, drink: drinkname, weight: weight)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         request.httpBody = try JSONEncoder().encode(body)
