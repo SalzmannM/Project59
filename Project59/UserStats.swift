@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct UserStats: View {
     @State var networking = Networking.shared
@@ -14,22 +15,42 @@ struct UserStats: View {
     @State var user: String
     @State var group: String
     
+    let colors = [
+        Color.green,
+        Color.cyan,
+        Color.blue,
+        Color.purple,
+        Color.red,
+        Color.orange,
+        Color.yellow,
+        Color.brown,
+        Color.pink,
+        Color.black
+    ]
+    
     var body: some View {
         VStack {
             Text("User Stats")
                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+            Text(group)
             Text(user)
             HStack {
                 if let errorMessage {
                     Label(errorMessage, systemImage: "exclamationmark.triangle")
                 }
                 else if let userRanking = networking.userRanking {
-                    ForEach(userRanking) { userrank in
-                        VStack {
-                            Text(userrank.username)
-                            Text(userrank.group)
-                            Text(userrank.drink)
-                            Text(userrank.count, format: .number)
+                    Chart {
+                        ForEach(Array(userRanking.enumerated()), id: \.offset) { index, userrank in
+                            SectorMark(angle: .value(userrank.drink, userrank.count),
+                                       innerRadius: .ratio(0.35),
+                                       angularInset: 2)
+                            .foregroundStyle(colors[index])
+                            .cornerRadius(5)
+                            .annotation(position: .overlay) {
+                                Text("\(userrank.drink): \(userrank.count)")
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                            }
                         }
                     }
                 } else {
