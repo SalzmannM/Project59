@@ -30,8 +30,39 @@ struct GroupUpdate: Decodable, Encodable {
     let stop: String
 }
 
+
 struct DrinkUpdate: Decodable, Encodable {
     let group: String
     let drink: String
     let weight: Float
 }
+
+struct DrinkByGroup: Decodable, Encodable {
+    let group: String
+}
+
+
+struct ConsumedUpdate: Decodable , Encodable{
+    let username: String
+    let group: String
+    let drink: String
+}
+
+struct DrinkQuery: Decodable, Encodable{
+    let username: String
+    let group: String
+}
+
+struct RankingQuery: Decodable, Encodable{
+    let group: String
+}
+
+struct ConsumedResponse: Decodable, Identifiable{
+    let id: UUID
+    let username: String
+    let group: String
+    let drink: String
+    let time: String
+    let count: Int
+}
+

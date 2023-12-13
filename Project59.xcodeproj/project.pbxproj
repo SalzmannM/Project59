@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B03F0A82B2A2B8000363BEB /* UserStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B03F0A72B2A2B8000363BEB /* UserStats.swift */; };
 		9B223EF32B2606E60002491B /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B223EF22B2606E60002491B /* Networking.swift */; };
 		9B223EF52B2607400002491B /* NetworkingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B223EF42B2607400002491B /* NetworkingModels.swift */; };
 		9B3CAC422B23117A0076606A /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3CAC412B23117A0076606A /* UserSettings.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B03F0A72B2A2B8000363BEB /* UserStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStats.swift; sourceTree = "<group>"; };
 		9B223EF22B2606E60002491B /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		9B223EF42B2607400002491B /* NetworkingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingModels.swift; sourceTree = "<group>"; };
 		9B3CAC402B1E47B60076606A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				9B595CC22B0BE27F00D8E8D2 /* GroupSettingsView.swift */,
 				9B3CAC412B23117A0076606A /* UserSettings.swift */,
 				9B6F0F572B278877004B57C6 /* DrinkSettingsView.swift */,
+				9B03F0A72B2A2B8000363BEB /* UserStats.swift */,
 			);
 			path = Project59;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 			files = (
 				9B595CC12B0BE23500D8E8D2 /* ConsumeView.swift in Sources */,
 				9B223EF52B2607400002491B /* NetworkingModels.swift in Sources */,
+				9B03F0A82B2A2B8000363BEB /* UserStats.swift in Sources */,
 				9B223EF32B2606E60002491B /* Networking.swift in Sources */,
 				9B595CC32B0BE27F00D8E8D2 /* GroupSettingsView.swift in Sources */,
 				9B3CAC422B23117A0076606A /* UserSettings.swift in Sources */,

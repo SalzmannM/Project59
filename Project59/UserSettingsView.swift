@@ -30,6 +30,7 @@ struct UserSettingsView: View {
                             Picker("Select a group", selection: $userSettings.groupName) {
                                 ForEach(groups) { group in
                                     Text(group.group)
+                                        .tag(group.group)
                                 }
                             }
                         } else {
