@@ -8,16 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(UserSettings.self) private var userSettings
+    
     var body: some View {
         TabView {
             ConsumeView()
                 .tabItem {
                     Label("Consume", systemImage: "wineglass")
                 }
+
+            UserStats(user: "testuser", group: "testgroup")
+                .tabItem {
+                    Label("My stats", systemImage: "figure")
+                }
+            
             RankingListView()
                 .tabItem {
                     Label("Ranking", systemImage: "crown")
                 }
+            
             UserSettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gear")

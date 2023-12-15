@@ -38,15 +38,16 @@ import SwiftUI
         }
     }
 
-    var nickName = "" {
+    var nickName = "testuser" {
         didSet {
             savedInstance = self
         }
     }
     
-    var groupName = "" {
+    var groupName = "testgroup" {
         didSet {
             savedInstance = self
         }
     }
 }
+

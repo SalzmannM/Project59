@@ -12,8 +12,8 @@ struct UserStats: View {
     @State var networking = Networking.shared
     @State var errorMessage: String?
     
-    @State var user: String
-    @State var group: String
+    let user: String
+    let group: String
     
     let colors = [
         Color.green,
@@ -42,7 +42,7 @@ struct UserStats: View {
                     Text(user)
                 }
             }
-               
+            
             HStack {
                 if let errorMessage {
                     Label(errorMessage, systemImage: "exclamationmark.triangle")
@@ -68,7 +68,7 @@ struct UserStats: View {
                             
                             HStack{
                                 let dateFormatter = ISO8601DateFormatter()
-                     
+                                
                                 
                                 Text("Last").foregroundColor(.gray)
                                 Text(entry.drink).foregroundColor(.gray)
@@ -82,9 +82,9 @@ struct UserStats: View {
                 } else {
                     Text("You have not drunken something, please drink!")
                 }
-                    
+                
             }
-        }
+        
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading )
         .padding()
         .background(Material.regular)
@@ -95,23 +95,23 @@ struct UserStats: View {
         Spacer()
         Spacer()
         Spacer()
-        .task {
-            do {
-                try await networking.loadUserStats(group: group, user: user)
+            .task {
+                do {
+                    try await networking.loadUserStats(group: group, user: user)
+                }
+                catch {
+                    errorMessage = error.localizedDescription
+                }
             }
-            catch {
-                errorMessage = error.localizedDescription
+            .refreshable {
+                do {
+                    try await networking.loadUserStats(group: group, user: user)
+                }
+                catch {
+                    errorMessage = error.localizedDescription
+                }
             }
-        }
-        .refreshable {
-            do {
-                try await networking.loadUserStats(group: group, user: user)
-            }
-            catch {
-                errorMessage = error.localizedDescription
-            }
-        }
-    }
+    }}
 }
 
 #Preview {
