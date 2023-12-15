@@ -43,15 +43,18 @@ struct UserSettingsView: View {
                             
                       
                     }
+                    Spacer(minLength: 50)
+                    
                     NavigationLink {
                         GroupSettingsView()
                     } label: {
-                        Label("Add new group", systemImage: "person.badge.plus")
+                        Label("create new group", systemImage: "person.badge.plus")
                             .padding(8)
                             .foregroundStyle(.white)
-                            .background(.red)
+                            .background(.blue)
                     }
                     .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
