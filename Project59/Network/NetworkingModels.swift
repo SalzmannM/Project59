@@ -66,3 +66,9 @@ struct ConsumedResponse: Decodable, Identifiable{
     let count: Int
 }
 
+struct Rank_Entry: Decodable , Encodable, Identifiable{
+    let id: UUID
+    let user: String
+    let group: String
+    let score: Float
+}

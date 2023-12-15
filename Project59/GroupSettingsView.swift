@@ -19,6 +19,7 @@ struct GroupSettingsView: View {
     
     @State var networking = Networking.shared
     
+    @Environment(\.dismiss) var dismiss
     
     func saveGroup() {
         Task {
@@ -35,6 +36,7 @@ struct GroupSettingsView: View {
                 await drinkAdd.saveDrink(group: $groupname.wrappedValue)
             }
         }
+        dismiss()
     }
     
     var body: some View {
@@ -66,14 +68,15 @@ struct GroupSettingsView: View {
             VStack {
                 Text("Available Drinks")
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+               
+                    TextField("Drink", text: $drinkname)
+                    TextField("Weight", value: $weight, format: .number)
+                    Button("Add Drink") {
+                        drinkslist.append(DrinkSettingsView(drinkname: $drinkname.wrappedValue, weight: $weight.wrappedValue))
+                    }
                 VStack {
                     List(drinkslist, id: \.id) { drink in
                         drink
-                    }
-                    TextField("Drink", text: $drinkname)
-                    TextField("Weight", value: $weight, format: .number)
-                    Button("Add") {
-                        drinkslist.append(DrinkSettingsView(drinkname: $drinkname.wrappedValue, weight: $weight.wrappedValue))
                     }
                 }
                 .frame(minWidth: 150, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
@@ -87,6 +90,7 @@ struct GroupSettingsView: View {
         }
         .toolbar {
             Button("Save", action: saveGroup)
+            
         }
     }
 }

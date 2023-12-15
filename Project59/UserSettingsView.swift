@@ -19,33 +19,40 @@ struct UserSettingsView: View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    Text("User Settings")
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    TextField("Username", text: $userSettings.nickName)
-                    HStack {
-                        if let errorMessage {
-                            Label(errorMessage, systemImage: "exclamationmark.triangle")
-                        }
-                        else if let groups = networking.groups {
-                            Picker("Select a group", selection: $userSettings.groupName) {
-                                ForEach(groups) { group in
-                                    Text(group.group)
-                                        .tag(group.group)
-                                }
-                            }
-                        } else {
-                            Text("There is no existing group yet, please create one")
-                        }
-                        NavigationLink {
-                            GroupSettingsView()
-                        } label: {
-                            Label("Add", systemImage: "person.badge.plus")
-                                .padding()
-                                .foregroundStyle(.white)
-                                .background(.red)
-                        }
-                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                    HStack{
+                        Text("Username:").bold()
+                        TextField("Username", text: $userSettings.nickName)
                     }
+                    HStack {
+                        HStack{
+                            Text("Group:").bold()
+                            if let errorMessage {
+                                Label(errorMessage, systemImage: "exclamationmark.triangle")
+                            }
+                            else if let groups = networking.groups {
+                                Picker("group", selection: $userSettings.groupName) {
+                                    ForEach(groups) { group in
+                                        Text(group.group)
+                                            .tag(group.group)
+                                    }
+                                }.frame(maxWidth: .infinity, alignment: .leading)
+                            } else {
+                                Text("There is no existing group yet, please create one")
+                            }
+                        }
+                            
+                      
+                    }
+                    NavigationLink {
+                        GroupSettingsView()
+                    } label: {
+                        Label("Add new group", systemImage: "person.badge.plus")
+                            .padding(8)
+                            .foregroundStyle(.white)
+                            .background(.red)
+                    }
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()

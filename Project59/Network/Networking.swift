@@ -14,7 +14,7 @@ import Foundation
     
     var drinks: [Drink]?
     
-    var ranking: [ConsumedResponse]?
+    var ranking: [Rank_Entry]?
     
     var userRanking: [ConsumedResponse]?
     
@@ -68,7 +68,7 @@ import Foundation
 
         request.httpBody = try JSONEncoder().encode(body)
         
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, _) = try await URLSession.shared.data(for: request)
         drinks = try JSONDecoder().decode([Drink].self, from: data)
     }
     
@@ -86,7 +86,7 @@ import Foundation
     }
     
     
-    func loadRanking(_ group: String) async throws {
+    func loadRanking(_ group: String) async throws{
         
         let url = baseUrl.appendingPathComponent("rank")
         var request = URLRequest(url: url)
@@ -97,8 +97,8 @@ import Foundation
 
         request.httpBody = try JSONEncoder().encode(body)
         
-        let (data, response) = try await URLSession.shared.data(for: request)
-        ranking = try JSONDecoder().decode([ConsumedResponse].self, from: data)
+        let (data, _) = try await URLSession.shared.data(for: request)
+        self.ranking = try JSONDecoder().decode([Rank_Entry].self, from: data)
     }
     
     func loadUserStats(group: String, user: String) async throws {
@@ -112,7 +112,7 @@ import Foundation
 
         request.httpBody = try JSONEncoder().encode(body)
         
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, _) = try await URLSession.shared.data(for: request)
         userRanking = try JSONDecoder().decode([ConsumedResponse].self, from: data)
     }
 }

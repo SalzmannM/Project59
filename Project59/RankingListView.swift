@@ -7,6 +7,27 @@
 
 import SwiftUI
 
+struct RankEntryView: View {
+    var entry: Rank_Entry
+
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 10) {
+            NavigationLink(entry.user) {
+                UserStats(user: entry.user, group: entry.group)
+            }
+                .foregroundColor(.primary)
+                .font(.headline)
+            HStack(spacing: 3) {
+                Label(String(entry.score), systemImage: "person").bold().foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+            }
+            .foregroundColor(.secondary)
+            
+            .font(.subheadline)
+        }.frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
 struct RankingListView: View {
     @Environment(UserSettings.self) private var userSettings
     
@@ -19,34 +40,33 @@ struct RankingListView: View {
         
         NavigationStack {
             ScrollView {
-                VStack {
-                    Text("RankingListView")
-                    Text(userSettings.groupName)
+                VStack (){
+                    Text("Scores").font(.title).bold().frame(maxWidth: .infinity, alignment: .center)
+                    Text(userSettings.groupName).bold().foregroundColor(.gray) .frame(maxWidth: .infinity, alignment: .center)
+                    
+                    Spacer()
+                    Spacer()
+                        
                     
                     if let errorMessage {
                         Label(errorMessage, systemImage: "exclamationmark.triangle")
                     }
                     else if let ranking = networking.ranking {
-                        ForEach(ranking) { userrank in
-                            HStack {
-                                HStack {
-                                    NavigationLink(userrank.username) {
-                                        UserStats(user: userrank.username, group: userrank.group)
-                                    }
-                                    Text(userrank.group)
-                                    Text(userrank.drink)
-                                    Text(userrank.count, format: .number)
-                                }
-                            }
+                        NavigationView{
+                            List {
+                                ForEach(ranking) { entry in RankEntryView(entry: entry)}
+                               
+                            }.listStyle(.plain)
                         }
                     }
+                    
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
+               
                 .padding()
-                .background(Material.regular)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .shadow(color: .black.opacity(0.3), radius: 5)
-                .padding()
+                //.background(Material.regular)
+                //.clipShape(RoundedRectangle(cornerRadius: 30))
+                //.shadow(color: .black.opacity(0.3), radius: 5)
+                //.padding()
                 .task {
                     do {
                         try await networking.loadRanking(userSettings.groupName)
