@@ -20,12 +20,12 @@ struct UserSettingsView: View {
             ScrollView {
                 VStack {
                     HStack{
-                        Text("Username:").bold()
+                        Text("Username:").foregroundColor(.gray)
                         TextField("Username", text: $userSettings.nickName).background(.white)
                     }
                     HStack {
                         HStack{
-                            Text("Group:").bold()
+                            Text("Group:").foregroundColor(.gray)
                             if let errorMessage {
                                 Label(errorMessage, systemImage: "exclamationmark.triangle")
                             }

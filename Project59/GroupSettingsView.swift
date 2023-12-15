@@ -93,6 +93,7 @@ struct GroupSettingsView: View {
                        
                         Button("Add Drink") {
                             drinkslist.append(DrinkSettingsView(drinkname: $drinkname.wrappedValue, weight: $weight.wrappedValue))
+                            drinkname = ""
                         }
                     }
                     VStack {

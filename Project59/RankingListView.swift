@@ -51,6 +51,9 @@ struct RankingListView: View {
                         Label(errorMessage, systemImage: "exclamationmark.triangle")
                     }
                     else if let ranking = networking.ranking {
+                        if ranking.isEmpty{
+                            Text("No Entries recorded").frame(maxWidth: .infinity, alignment: .center)
+                        }
                         NavigationView{
                             List {
                                 ForEach(ranking) { entry in RankEntryView(entry: entry)}

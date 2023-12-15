@@ -47,6 +47,10 @@ struct UserStats: View {
                     Label(errorMessage, systemImage: "exclamationmark.triangle")
                 }
                 else if let userRanking: [ConsumedResponse] = networking.userRanking {
+                    
+                    if userRanking.isEmpty{
+                        Text("No Drinks recorded").frame(maxWidth: .infinity, alignment: .center)
+                    }
                     VStack{
                         Chart {
                             ForEach(Array(userRanking.enumerated()), id: \.offset) { index, userrank in
