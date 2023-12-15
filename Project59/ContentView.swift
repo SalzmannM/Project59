@@ -17,7 +17,7 @@ struct ContentView: View {
                     Label("Consume", systemImage: "wineglass")
                 }
 
-            UserStats(user: "testuser", group: "testgroup")
+            UserStats(user: userSettings.nickName, group: userSettings.groupName)
                 .tabItem {
                     Label("My stats", systemImage: "figure")
                 }
