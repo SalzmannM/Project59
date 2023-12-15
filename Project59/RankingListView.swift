@@ -41,8 +41,7 @@ struct RankingListView: View {
         NavigationStack {
             ScrollView {
                 VStack (){
-                    Text("Scores").font(.title).bold().frame(maxWidth: .infinity, alignment: .center)
-                    Text(userSettings.groupName).bold().foregroundColor(.gray) .frame(maxWidth: .infinity, alignment: .center)
+                    Text(userSettings.groupName).font(.title2).bold().foregroundColor(.gray) .frame(maxWidth: .infinity, alignment: .center)
                     
                     Spacer()
                     Spacer()
@@ -83,7 +82,7 @@ struct RankingListView: View {
                         errorMessage = error.localizedDescription
                     }
                 }
-            }
+            }.navigationTitle("Scores")
         }
     }
 }

@@ -29,19 +29,18 @@ struct UserStats: View {
     ]
     
     var body: some View {
-        VStack {
-            Text("User Statistic")
-                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/).bold()
+        NavigationStack {
+           
             VStack{
                 HStack{
                     Text("Group").foregroundColor(.gray)
                     Text(group)
-                }
+                }.frame(maxWidth: .infinity, alignment: .leading)
                 HStack{
                     Text("User").foregroundColor(.gray)
                     Text(user)
-                }
-            }
+                }.frame(maxWidth: .infinity, alignment: .leading)
+            }.padding()
             
             HStack {
                 if let errorMessage {
@@ -83,7 +82,7 @@ struct UserStats: View {
                     Text("You have not drunken something, please drink!")
                 }
                 
-            }
+            }.navigationTitle("User Metrics")
         
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading )
         .padding()
