@@ -17,12 +17,12 @@ struct UserStats: View {
     
     let colors = [
         Color.green,
+        Color.red,
+        Color.yellow,
         Color.cyan,
         Color.blue,
         Color.purple,
-        Color.red,
         Color.orange,
-        Color.yellow,
         Color.brown,
         Color.pink,
         Color.black
