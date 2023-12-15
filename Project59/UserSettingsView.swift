@@ -21,7 +21,7 @@ struct UserSettingsView: View {
                 VStack {
                     HStack{
                         Text("Username:").bold()
-                        TextField("Username", text: $userSettings.nickName)
+                        TextField("Username", text: $userSettings.nickName).background(.white)
                     }
                     HStack {
                         HStack{
