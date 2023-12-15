@@ -44,6 +44,59 @@ struct GroupSettingsView: View {
     var body: some View {
         NavigationStack{
             ScrollView {
+                
+                
+                VStack {
+                    Text("Drinks")
+                        .font(.title2)
+                    
+                   
+    
+                    
+                    HStack{
+                        VStack{
+                            Text("Drink") .frame(maxWidth: .infinity, alignment: .leading)
+                            TextField("Drink", text: $drinkname).background(.white)
+                        }    .frame(maxWidth: .infinity, alignment: .leading)
+                        VStack{
+                            Text("Weight") .frame(maxWidth: 70, alignment: .leading)
+                            TextField("Weight", value: $weight, format: .number).background(.white)
+                                .frame(maxWidth: 70, alignment: .leading)
+                        }
+                    }
+                    
+                    VStack{
+                        
+                        Button("Add Drink") {
+                            if drinkname != ""
+                            {
+                                drinkslist.append(DrinkSettingsView(drinkname: $drinkname.wrappedValue, weight: $weight.wrappedValue))
+                                drinkname = ""
+                            }
+                        }
+                      
+                    }
+            
+                    VStack {
+                        if drinkslist.count > 0{
+                            ForEach(drinkslist, id: \.id) { drink in
+                                drink
+                            }                 .frame(maxWidth: .infinity,  maxHeight: .infinity, alignment: .leading)
+                            Button("Clear Drinks") {
+                                drinkslist = []
+                            }
+                        }
+                      
+                    }
+   
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+                .background(Material.regular)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .shadow(color: .black.opacity(0.3), radius: 5)
+                .padding()
+                
                 VStack {
                     HStack{
                         Text("Group")
@@ -72,45 +125,6 @@ struct GroupSettingsView: View {
                 .shadow(color: .black.opacity(0.3), radius: 5)
                 .padding()
                 
-                VStack {
-                    Text("Drink Options")
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    HStack{
-                        VStack{
-                            Text("Drink") .frame(maxWidth: .infinity, alignment: .leading)
-                            TextField("Drink", text: $drinkname).background(.white)
-                        }    .frame(maxWidth: .infinity, alignment: .leading)
-                        VStack{
-                            Text("Weight") .frame(maxWidth: 70, alignment: .leading)
-                            TextField("Weight", value: $weight, format: .number).background(.white)
-                                .frame(maxWidth: 70, alignment: .leading)
-                        }
-                    }
-                    
-                   
-                    HStack{
-                        
-                       
-                        Button("Add Drink") {
-                            drinkslist.append(DrinkSettingsView(drinkname: $drinkname.wrappedValue, weight: $weight.wrappedValue))
-                            drinkname = ""
-                        }
-                    }
-                    VStack {
-                        if drinkslist.count > 0{
-                            ForEach(drinkslist, id: \.id) { drink in
-                                drink
-                            }                 .frame(maxWidth: .infinity,  maxHeight: .infinity, alignment: .leading)
-                        }
-                    }
-   
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
-                .background(Material.regular)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .shadow(color: .black.opacity(0.3), radius: 5)
-                .padding()
             }.navigationTitle("Group Settings")
             .toolbar {
                 Button("Save", action: saveGroup)

@@ -18,7 +18,6 @@ struct DrinkSettingsView: View {
     
     var body: some View {
         HStack {
-            Text(errorMessage)
             Text(drinkname)
             Text(String(format: "%.2f", weight))
         }
@@ -27,6 +26,7 @@ struct DrinkSettingsView: View {
     func saveDrink(group: String) async {
         do {
             try await networking.sendDrink(drinkname, weight: weight, group: group)
+        
         }
         catch {
             errorMessage = error.localizedDescription
