@@ -24,21 +24,25 @@ struct GroupSettingsView: View {
    
     
     func saveGroup() {
-        Task {
-            do {
-                try await networking.sendGroup(group: groupname, target: target, start: start, stop: stop)
-            }
-            catch {
-                self.errorMessage = error.localizedDescription
-            }
-        }
-        
-        drinkslist.forEach { drinkAdd in
+        if groupname != "" {
             Task {
-                await drinkAdd.saveDrink(group: $groupname.wrappedValue)
+                
+                do {
+                    try await networking.sendGroup(group: groupname, target: target, start: start, stop: stop)
+                }
+                catch {
+                    self.errorMessage = error.localizedDescription
+                }
             }
+            
+            
+            drinkslist.forEach { drinkAdd in
+                Task {
+                    await drinkAdd.saveDrink(group: $groupname.wrappedValue)
+                }
+            }
+            dismiss()
         }
-        dismiss()
     }
     
     var body: some View {

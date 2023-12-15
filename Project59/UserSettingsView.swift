@@ -19,10 +19,7 @@ struct UserSettingsView: View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    HStack{
-                        Text("Username:").foregroundColor(.gray)
-                        TextField("Username", text: $userSettings.nickName).background(.white)
-                    }
+                  
                     HStack {
                         HStack{
                             Text("Group:").foregroundColor(.gray)
@@ -39,10 +36,20 @@ struct UserSettingsView: View {
                             } else {
                                 Text("There is no existing group yet, please create one")
                             }
+                            
+                
                         }
+                      
                             
                       
                     }
+                    
+                    HStack{
+                        Text("Username:").foregroundColor(.gray)
+                        TextField("Username", text: $userSettings.nickName).background(.white)
+                    }
+                   
+                    
                     Spacer(minLength: 50)
                     
                     NavigationLink {

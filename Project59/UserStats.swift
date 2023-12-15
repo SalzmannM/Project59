@@ -55,14 +55,15 @@ struct UserStats: View {
                         Chart {
                             ForEach(Array(userRanking.enumerated()), id: \.offset) { index, userrank in
                                 SectorMark(angle: .value(userrank.drink, userrank.count),
+                                           
                                            innerRadius: .ratio(0.35),
-                                           angularInset: 2)
+                                           angularInset: 4)
                                 .foregroundStyle(colors[index])
                                 .cornerRadius(5)
                                 .annotation(position: .overlay) {
                                     Text("\(userrank.drink): \(userrank.count)")
                                         .font(.headline)
-                                        .foregroundColor(.white)
+                                        .foregroundColor(.black)
                                 }
                             }
                         }
@@ -90,9 +91,9 @@ struct UserStats: View {
         
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading )
         .padding()
-        .background(Material.regular)
+        .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
-        .shadow(color: .black.opacity(0.3), radius: 5)
+    //   .shadow(color: .black.opacity(0.3), radius: 5)
         .padding()
         Spacer()
         Spacer()
@@ -118,5 +119,5 @@ struct UserStats: View {
 }
 
 #Preview {
-    UserStats(user: "Ichbins", group: "testgroup")
+    UserStats(user: "testuser", group: "testgroup")
 }

@@ -52,7 +52,7 @@ struct RankingListView: View {
                     }
                     else if let ranking = networking.ranking {
                         if ranking.isEmpty{
-                            Text("No Entries recorded").frame(maxWidth: .infinity, alignment: .center)
+                            Text("No Drinks recorded").frame(maxWidth: .infinity, alignment: .center)
                         }
                         NavigationView{
                             List {
