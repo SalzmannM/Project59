@@ -18,7 +18,7 @@ struct UserStats: View {
     let colors = [
         Color.green,
         Color.red,
-        Color.yellow,
+        //Color.yellow,
         Color.cyan,
         Color.blue,
         Color.purple,
