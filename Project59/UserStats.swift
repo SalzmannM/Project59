@@ -77,7 +77,7 @@ struct UserStats: View {
                                 
                                 
                                 HStack{
-                                    Text(entry.drink).foregroundColor(.black)
+                                    Text(entry.drink)
                                 }.frame(alignment: .leading)
                                 
                                 HStack{
