@@ -25,7 +25,8 @@ struct UserStats: View {
         Color.orange,
         Color.brown,
         Color.pink,
-        Color.black
+        Color.teal
+        
     ]
     
     var body: some View {
@@ -58,11 +59,12 @@ struct UserStats: View {
                                            
                                            innerRadius: .ratio(0.25),
                                            angularInset: 4)
-                                .foregroundStyle(colors[index])
+                                .foregroundStyle(colors[index % colors.count])
                                 .cornerRadius(5)
                                 .annotation(position: .overlay) {
                                     Text("\(userrank.drink): \(userrank.count)")
                                         .font(.headline)
+                            
                                         //.foregroundColor(.black)
                                 }
                             }
