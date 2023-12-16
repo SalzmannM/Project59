@@ -58,11 +58,11 @@ struct GroupSettingsView: View {
                     HStack{
                         VStack{
                             Text("Drink") .frame(maxWidth: .infinity, alignment: .leading)
-                            TextField("Drink", text: $drinkname).background(.white)
+                            TextField("Drink", text: $drinkname)
                         }    .frame(maxWidth: .infinity, alignment: .leading)
                         VStack{
                             Text("Weight") .frame(maxWidth: 70, alignment: .leading)
-                            TextField("Weight", value: $weight, format: .number).background(.white)
+                            TextField("Weight", value: $weight, format: .number)
                                 .frame(maxWidth: 70, alignment: .leading)
                         }
                     }
@@ -102,7 +102,7 @@ struct GroupSettingsView: View {
                 VStack {
                     HStack{
                         Text("Group")
-                        TextField("Groupname", text: $groupname).background(.white)
+                        TextField("Groupname", text: $groupname)
                     }
                     /*
                     HStack{
