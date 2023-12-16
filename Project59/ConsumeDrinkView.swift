@@ -57,7 +57,9 @@ struct ConsumeDrinkView: View {
     }
     
     var body: some View {
-        HStack {
+
+
+            VStack {
             Button {
                 consumeDrink(drink: drinkname)
             } label: {
@@ -65,7 +67,7 @@ struct ConsumeDrinkView: View {
                     .resizable()
                     .frame(width: 70, height: 70)
                     .clipShape(Circle())
-                    .shadow(radius: 10)
+                    //.shadow(radius: 10)
             }
             Text(drinkname)
                 .font(.title2)
