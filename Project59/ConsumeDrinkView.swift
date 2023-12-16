@@ -13,7 +13,9 @@ struct ConsumeDrinkView: View {
     @State var networking = Networking.shared
     @State var errorMessage: String?
     
+    @State private var angle = 0.0
     @State var drinkname: String
+    @State var backgroundOpacity = 0.0
     
     func consumeDrink(drink: String) {
         Task {
@@ -50,29 +52,43 @@ struct ConsumeDrinkView: View {
             drinkimage = "Stein"
         } else if drinkname.lowercased().contains("tulip") {
             drinkimage = "Tulip"
-        } else if drinkname.lowercased().contains("beer") {
+        } else if drinkname.lowercased().contains("beer") || drinkname.lowercased().contains("chalice") {
             drinkimage = "Chalice"
         }
         return drinkimage
     }
     
     var body: some View {
-        HStack {
-            Button {
-                consumeDrink(drink: drinkname)
-            } label: {
-                Image(getDrinkImage())
-                    .resizable()
-                    .frame(width: 70, height: 70)
-                    .clipShape(Circle())
-                    .shadow(radius: 10)
+        Button {
+            withAnimation(.bouncy, completionCriteria: .removed) {
+                backgroundOpacity += 0.3
+            } completion: {
+                withAnimation {
+                    backgroundOpacity -= 0.3
+                }
             }
+            consumeDrink(drink: drinkname)
+            angle += 360
+        } label: {
+            Image(getDrinkImage())
+                .resizable()
+                .frame(width: 70, height: 70)
+                .clipShape(Circle())
+                .shadow(radius: 5)
+                .frame(width: 90, height: 90)
+                .rotationEffect(.degrees(angle))
+                .animation(.easeIn(duration: 1), value: angle)
             Text(drinkname)
                 .font(.title2)
+                .fontWeight(.bold)
+            Spacer()
         }
-        .onTapGesture {
-            
-        }
+        .clipShape(Rectangle())
+        .frame(maxWidth: .infinity)
+        .padding([.trailing], 10)
+        .background(Color.gray.opacity(backgroundOpacity))
+        .animation(.easeIn(duration: 0.5), value: backgroundOpacity)
+        .cornerRadius(10.0)
     }
 }
 

@@ -29,7 +29,7 @@ struct ConsumeView: View {
             }.padding()
             
             ScrollView {
-                VStack(alignment: .leading) {
+                VStack {
                     if let errorMessage {
                         Label(errorMessage, systemImage: "exclamationmark.triangle")
                     }
