@@ -59,36 +59,38 @@ struct ConsumeDrinkView: View {
     }
     
     var body: some View {
-        Button {
-            withAnimation(.bouncy, completionCriteria: .removed) {
-                backgroundOpacity += 0.3
-            } completion: {
-                withAnimation {
-                    backgroundOpacity -= 0.3
+        VStack {
+            Button {
+                withAnimation(.bouncy, completionCriteria: .removed) {
+                    backgroundOpacity += 0.3
+                } completion: {
+                    withAnimation {
+                        backgroundOpacity -= 0.3
+                    }
                 }
+                consumeDrink(drink: drinkname)
+                angle += 360
+            } label: {
+                Image(getDrinkImage())
+                    .resizable()
+                    .frame(width: 70, height: 70)
+                    .clipShape(Circle())
+                    .shadow(radius: 5)
+                    .frame(width: 90, height: 90)
+                    .rotationEffect(.degrees(angle))
+                    .animation(.easeIn(duration: 1), value: angle)
+                Text(drinkname)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                Spacer()
             }
-            consumeDrink(drink: drinkname)
-            angle += 360
-        } label: {
-            Image(getDrinkImage())
-                .resizable()
-                .frame(width: 70, height: 70)
-                .clipShape(Circle())
-                .shadow(radius: 5)
-                .frame(width: 90, height: 90)
-                .rotationEffect(.degrees(angle))
-                .animation(.easeIn(duration: 1), value: angle)
-            Text(drinkname)
-                .font(.title2)
-                .fontWeight(.bold)
-            Spacer()
+            .clipShape(Rectangle())
+            .frame(maxWidth: .infinity)
+            .padding([.trailing], 10)
+            .background(Color.gray.opacity(backgroundOpacity))
+            .animation(.easeIn(duration: 0.5), value: backgroundOpacity)
+            .cornerRadius(10.0)
         }
-        .clipShape(Rectangle())
-        .frame(maxWidth: .infinity)
-        .padding([.trailing], 10)
-        .background(Color.gray.opacity(backgroundOpacity))
-        .animation(.easeIn(duration: 0.5), value: backgroundOpacity)
-        .cornerRadius(10.0)
     }
 }
 

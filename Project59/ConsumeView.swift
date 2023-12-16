@@ -15,8 +15,13 @@ struct ConsumeView: View {
     
     var body: some View {
         @Bindable var userSettings = userSettings
+        let adaptiveColumn = [
+            GridItem(.flexible(minimum: 50, maximum: 200)),
+            GridItem(.flexible(minimum: 50, maximum: 200))
+        ]
         
         NavigationStack {
+            /*
             VStack{
                 HStack{
                     Text("Group").foregroundColor(.gray)
@@ -26,23 +31,25 @@ struct ConsumeView: View {
                     Text("User").foregroundColor(.gray)
                     Text(userSettings.nickName)
                 }.frame(maxWidth: .infinity, alignment: .leading)
-            }.padding()
+            }.padding().hidden() */
             
             ScrollView {
-                VStack {
+                LazyVGrid(columns: adaptiveColumn, spacing: 20)
+                {
                     if let errorMessage {
                         Label(errorMessage, systemImage: "exclamationmark.triangle")
                     }
                     else if let drinks = networking.drinks {
-                        ForEach(drinks) { drink in
-                            ConsumeDrinkView(drinkname: drink.drink)
+                        ForEach(drinks, id: \.id) { drink in
+                            ConsumeDrinkView(drinkname: drink.drink).frame(minHeight: 100, maxHeight:170, alignment: .top)
+                           
                         }
                     }
                 }
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(maxWidth: .infinity, alignment: .center)
             .padding()
-            .background(Material.regular)
+            //.background(Material.regular)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .shadow(color: .black.opacity(0.3), radius: 5)
             .padding()
