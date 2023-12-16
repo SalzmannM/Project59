@@ -30,7 +30,7 @@ struct UserStats: View {
     
     var body: some View {
         NavigationStack {
-           
+            
             VStack{
                 HStack{
                     Text("Group").foregroundColor(.gray)
@@ -63,7 +63,7 @@ struct UserStats: View {
                                 .annotation(position: .overlay) {
                                     Text("\(userrank.drink): \(userrank.count)")
                                         .font(.headline)
-                                        .foregroundColor(.black)
+                                        //.foregroundColor(.black)
                                 }
                             }
                         }.frame(minWidth: 200,  maxWidth: .infinity, minHeight: 200, alignment: .topLeading)
@@ -88,6 +88,7 @@ struct UserStats: View {
                         }
                         Spacer()
                     }.frame(maxHeight: .infinity, alignment: .bottom)
+                        //.background(.white)
                     
                     
                 } else {
@@ -95,36 +96,37 @@ struct UserStats: View {
                 }
                 
             }.navigationTitle("User Metrics")
-        
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading )
-        .padding()
-        .background(.white)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-    //   .shadow(color: .black.opacity(0.3), radius: 5)
-        .padding()
-        Spacer()
-        Spacer()
-        Spacer()
-        Spacer()
-            .task {
-                do {
-                    try await networking.loadUserStats(group: group, user: user)
-                    errorMessage = nil
+            
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading )
+                .padding()
+               // .background(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+            //   .shadow(color: .black.opacity(0.3), radius: 5)
+                .padding()
+            Spacer()
+            Spacer()
+            Spacer()
+            Spacer()
+                .task {
+                    do {
+                        try await networking.loadUserStats(group: group, user: user)
+                        errorMessage = nil
+                    }
+                    catch {
+                        errorMessage = error.localizedDescription
+                    }
                 }
-                catch {
-                    errorMessage = error.localizedDescription
+                .refreshable {
+                    do {
+                        try await networking.loadUserStats(group: group, user: user)
+                        errorMessage = nil
+                    }
+                    catch {
+                        errorMessage = error.localizedDescription
+                    }
                 }
-            }
-            .refreshable {
-                do {
-                    try await networking.loadUserStats(group: group, user: user)
-                    errorMessage = nil
-                }
-                catch {
-                    errorMessage = error.localizedDescription
-                }
-            }
-    }}
+        }
+    }
 }
 
 #Preview {
