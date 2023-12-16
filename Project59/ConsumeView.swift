@@ -40,7 +40,7 @@ struct ConsumeView: View {
                         Label(errorMessage, systemImage: "exclamationmark.triangle")
                     }
                     else if let drinks = networking.drinks {
-                        ForEach(drinks) { drink in
+                        ForEach(drinks, id: \.id) { drink in
                             ConsumeDrinkView(drinkname: drink.drink).frame(width: 100, height: 100, alignment: .center)
                            
                         }
