@@ -71,18 +71,18 @@ struct ConsumeDrinkView: View {
                 consumeDrink(drink: drinkname)
                 angle += 360
             } label: {
-                Image(getDrinkImage())
-                    .resizable()
-                    .frame(width: 70, height: 70)
-                    .clipShape(Circle())
-                    .shadow(radius: 5)
-                    .frame(width: 90, height: 90)
-                    .rotationEffect(.degrees(angle))
-                    .animation(.easeIn(duration: 1), value: angle)
-                Text(drinkname)
-                    .font(.title2)
-                    .fontWeight(.bold)
-                Spacer()
+                VStack {
+                    Image(getDrinkImage())
+                        .resizable()
+                        .frame(width: 70, height: 70)
+                        .clipShape(Circle())
+                        .shadow(radius: 5)
+                        .frame(width: 90, height: 90)
+                        .rotationEffect(.degrees(angle))
+                        .animation(.easeIn(duration: 1), value: angle)
+                    Text(drinkname)
+                        .font(.title2)
+                }
             }
             .clipShape(Rectangle())
             .frame(maxWidth: .infinity)
