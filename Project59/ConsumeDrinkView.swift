@@ -60,16 +60,24 @@ struct ConsumeDrinkView: View {
     
     var body: some View {
         VStack {
+            if let errorMessage {
+                Label(errorMessage, systemImage: "exclamationmark.triangle")
+            }
+            
             Button {
-                withAnimation(.bouncy, completionCriteria: .removed) {
-                    backgroundOpacity += 0.3
-                } completion: {
-                    withAnimation {
-                        backgroundOpacity -= 0.3
+                if userSettings.nickName != "" && userSettings.groupName != ""
+                {
+                    withAnimation(.bouncy, completionCriteria: .removed) {
+                        backgroundOpacity += 0.3
+                    } completion: {
+                        withAnimation {
+                            backgroundOpacity -= 0.3
+                        }
                     }
+                    consumeDrink(drink: drinkname)
+                    angle += 360
                 }
-                consumeDrink(drink: drinkname)
-                angle += 360
+                
             } label: {
                 VStack {
                     Image(getDrinkImage())

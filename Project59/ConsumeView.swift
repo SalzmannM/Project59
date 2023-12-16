@@ -32,14 +32,20 @@ struct ConsumeView: View {
                     Text(userSettings.nickName)
                 }.frame(maxWidth: .infinity, alignment: .leading)
             }.padding().hidden() */
-            
+            if let errorMessage {
+                Label(errorMessage, systemImage: "exclamationmark.triangle")
+            }
+            if userSettings.nickName == "" || userSettings.groupName == ""
+            {
+                Label("You have not set a username and group in the Settings Tab", systemImage: "exclamationmark.triangle").padding()
+         
+            }
+                
             ScrollView {
                 LazyVGrid(columns: adaptiveColumn, spacing: 20)
                 {
-                    if let errorMessage {
-                        Label(errorMessage, systemImage: "exclamationmark.triangle")
-                    }
-                    else if let drinks = networking.drinks {
+               
+                     if let drinks = networking.drinks {
                         ForEach(drinks, id: \.id) { drink in
                             ConsumeDrinkView(drinkname: drink.drink).frame(minHeight: 100, maxHeight:170, alignment: .top)
                            
