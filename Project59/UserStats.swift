@@ -24,8 +24,7 @@ struct UserStats: View {
         Color.purple,
         Color.orange,
         Color.brown,
-        Color.pink,
-        Color.teal
+        Color.pink
         
     ]
     
