@@ -16,8 +16,10 @@ struct ConsumeView: View {
     var body: some View {
         @Bindable var userSettings = userSettings
         let adaptiveColumn = [
-            GridItem(.flexible(minimum: 50, maximum: 200)),
-            GridItem(.flexible(minimum: 50, maximum: 200))
+            GridItem(.flexible(minimum: 100, maximum: 300)),
+            GridItem(.flexible(minimum: 100, maximum: 300)),
+            GridItem(.flexible(minimum: 100, maximum: 300))
+           
         ]
         
         NavigationStack {

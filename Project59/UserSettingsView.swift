@@ -46,7 +46,8 @@ struct UserSettingsView: View {
                     
                     HStack{
                         Text("Username:").foregroundColor(.gray)
-                        TextField("Username", text: $userSettings.nickName).background(.white)
+                        TextField("Username", text: $userSettings.nickName)
+                            //.background(.white)
                     }
                    
                     

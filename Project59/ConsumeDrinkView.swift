@@ -76,6 +76,7 @@ struct ConsumeDrinkView: View {
                     }
                     consumeDrink(drink: drinkname)
                     angle += 360
+                    errorMessage = nil
                 }
                 
             } label: {
