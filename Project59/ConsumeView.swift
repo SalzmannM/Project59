@@ -60,6 +60,7 @@ struct ConsumeView: View {
             .task {
                 do {
                     try await networking.loadDrinks(userSettings.groupName)
+                    errorMessage = nil
                 }
                 catch {
                     errorMessage = error.localizedDescription
@@ -68,6 +69,7 @@ struct ConsumeView: View {
             .refreshable {
                 do {
                     try await networking.loadDrinks(userSettings.groupName)
+                    errorMessage = nil
                 }
                 catch {
                     errorMessage = error.localizedDescription
