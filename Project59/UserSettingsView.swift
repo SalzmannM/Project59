@@ -33,9 +33,9 @@ struct UserSettingsView: View {
                                             .tag(group.group)
                                     }
                                 }.frame(maxWidth: .infinity, alignment: .leading)
-                            } else {
-                                Text("There is no existing group yet, please create one")
-                            }
+                                } else {
+                                    Text("There is no existing group yet, please create one")
+                                }
                             
                 
                         }
@@ -73,6 +73,7 @@ struct UserSettingsView: View {
                 .task {
                     do {
                         try await networking.loadGroups()
+                        errorMessage=nil
                     }
                     catch {
                         errorMessage = error.localizedDescription
@@ -81,6 +82,7 @@ struct UserSettingsView: View {
                 .refreshable {
                     do {
                         try await networking.loadGroups()
+                        errorMessage=nil
                     }
                     catch {
                         errorMessage = error.localizedDescription

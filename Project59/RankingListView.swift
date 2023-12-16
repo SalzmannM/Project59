@@ -39,7 +39,7 @@ struct RankingListView: View {
         @Bindable var userSettings = userSettings
         
         NavigationStack {
-            ScrollView {
+         
                 VStack (){
                     Text(userSettings.groupName).font(.title2).bold().foregroundColor(.gray) .frame(maxWidth: .infinity, alignment: .center)
                     
@@ -72,6 +72,7 @@ struct RankingListView: View {
                 .task {
                     do {
                         try await networking.loadRanking(userSettings.groupName)
+                        errorMessage=nil
                     }
                     catch {
                         errorMessage = error.localizedDescription
@@ -80,11 +81,12 @@ struct RankingListView: View {
                 .refreshable {
                     do {
                         try await networking.loadRanking(userSettings.groupName)
+                        errorMessage=nil
                     }
                     catch {
                         errorMessage = error.localizedDescription
                     }
-                }
+                
             }.navigationTitle("Scores")
         }
     }

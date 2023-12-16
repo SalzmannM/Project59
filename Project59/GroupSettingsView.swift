@@ -13,7 +13,7 @@ struct GroupSettingsView: View {
     @State var start: Date = Date.now
     @State var stop: Date = Date.now
     @State var drinkslist:[DrinkSettingsView] = []
-    @State var errorMessage: String = ""
+    @State var errorMessage: String?
     @State var drinkname: String = ""
     @State var weight: Float = 1
     
@@ -29,12 +29,14 @@ struct GroupSettingsView: View {
                 
                 do {
                     try await networking.sendGroup(group: groupname, target: target, start: start, stop: stop)
+                    self.errorMessage = nil
                 }
                 catch {
                     self.errorMessage = error.localizedDescription
                 }
             }
             
+         
             
             drinkslist.forEach { drinkAdd in
                 Task {
@@ -49,13 +51,9 @@ struct GroupSettingsView: View {
         NavigationStack{
             ScrollView {
                 
-                
                 VStack {
                     Text("Drinks")
                         .font(.title2)
-                    
-                   
-    
                     
                     HStack{
                         VStack{
@@ -106,21 +104,22 @@ struct GroupSettingsView: View {
                         Text("Group")
                         TextField("Groupname", text: $groupname).background(.white)
                     }
-                    
+                    /*
                     HStack{
                         Text("Target")
                         TextField("Target", value: $target, format: .number).background(.white)
                     }.hidden()
+                   
                         DatePicker(
                         "Start Time",
                         selection: $start,
                         displayedComponents: [.date]
-                    )
+                        ).disabled(true)
                     DatePicker(
                         "Stop Time",
                         selection: $stop,
                         displayedComponents: [.date]
-                    )
+                    ).hidden()*/
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()

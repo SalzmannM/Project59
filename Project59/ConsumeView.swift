@@ -92,27 +92,29 @@ struct ConsumeView: View {
                         }
                     }
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
-                .background(Material.regular)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .shadow(color: .black.opacity(0.3), radius: 5)
-                .padding()
-                .task {
-                    do {
-                        try await networking.loadDrinks(userSettings.groupName)
-                    }
-                    catch {
-                        errorMessage = error.localizedDescription
-                    }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
+            .background(Material.regular)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .shadow(color: .black.opacity(0.3), radius: 5)
+            .padding()
+            .task {
+                do {
+                    try await networking.loadDrinks(userSettings.groupName)
+                    errorMessage = nil
                 }
-                .refreshable {
-                    do {
-                        try await networking.loadDrinks(userSettings.groupName)
-                    }
-                    catch {
-                        errorMessage = error.localizedDescription
-                    }
+                catch {
+                    errorMessage = error.localizedDescription
+                }
+            }
+            .refreshable {
+                do {
+                    try await networking.loadDrinks(userSettings.groupName)
+                    errorMessage = nil
+                }
+                catch {
+                    errorMessage = error.localizedDescription
                 }
             }
             .navigationTitle("Consume")

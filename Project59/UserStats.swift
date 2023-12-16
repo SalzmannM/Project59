@@ -39,7 +39,7 @@ struct UserStats: View {
                 HStack{
                     Text("User").foregroundColor(.gray)
                     Text(user)
-                }.frame(maxWidth: .infinity, alignment: .leading)
+                }.frame(maxWidth: .infinity, alignment: .topLeading)
             }.padding()
             
             HStack {
@@ -49,14 +49,14 @@ struct UserStats: View {
                 else if let userRanking: [ConsumedResponse] = networking.userRanking {
                     
                     if userRanking.isEmpty{
-                        Text("No Drinks recorded").frame(maxWidth: .infinity, alignment: .center)
+                        Text("No Drinks recorded").frame(maxWidth: .infinity, alignment: .topLeading)
                     }
                     VStack{
                         Chart {
                             ForEach(Array(userRanking.enumerated()), id: \.offset) { index, userrank in
                                 SectorMark(angle: .value(userrank.drink, userrank.count),
                                            
-                                           innerRadius: .ratio(0.35),
+                                           innerRadius: .ratio(0.25),
                                            angularInset: 4)
                                 .foregroundStyle(colors[index])
                                 .cornerRadius(5)
@@ -66,7 +66,9 @@ struct UserStats: View {
                                         .foregroundColor(.black)
                                 }
                             }
-                        }
+                        }.frame(minWidth: 200,  maxWidth: .infinity, minHeight: 200, alignment: .topLeading)
+                        Spacer()
+                        Text("Most recent").font(.title2).foregroundColor(.gray).frame(maxWidth: .infinity, alignment: .topLeading)
                         
                         ForEach(Array(userRanking.enumerated()), id: \.offset)  { index, entry in
                             
@@ -74,13 +76,18 @@ struct UserStats: View {
                                 let dateFormatter = ISO8601DateFormatter()
                                 
                                 
-                                Text("Last").foregroundColor(.gray)
-                                Text(entry.drink).foregroundColor(.gray)
-                                Text(dateFormatter.date(from:entry.time)!, style: .date)
-                                Text(dateFormatter.date(from:entry.time)!, style: .time)
-                            } .frame(maxWidth: .infinity, alignment: .leading)
+                                HStack{
+                                    Text(entry.drink).foregroundColor(.black)
+                                }.frame(alignment: .leading)
+                                
+                                HStack{
+                                    Text(dateFormatter.date(from:entry.time)!, style: .date)
+                                    Text(dateFormatter.date(from:entry.time)!, style: .time)
+                                }.frame(maxWidth: .infinity, alignment: .trailing)
+                            }
                         }
-                    }
+                        Spacer()
+                    }.frame(maxHeight: .infinity, alignment: .bottom)
                     
                     
                 } else {
@@ -89,7 +96,7 @@ struct UserStats: View {
                 
             }.navigationTitle("User Metrics")
         
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading )
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading )
         .padding()
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -102,6 +109,7 @@ struct UserStats: View {
             .task {
                 do {
                     try await networking.loadUserStats(group: group, user: user)
+                    errorMessage = nil
                 }
                 catch {
                     errorMessage = error.localizedDescription
@@ -110,6 +118,7 @@ struct UserStats: View {
             .refreshable {
                 do {
                     try await networking.loadUserStats(group: group, user: user)
+                    errorMessage = nil
                 }
                 catch {
                     errorMessage = error.localizedDescription

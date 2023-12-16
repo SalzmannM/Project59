@@ -11,7 +11,7 @@ struct DrinkSettingsView: View {
     let id: UUID = UUID()
     @State var networking = Networking.shared
     
-    @State var errorMessage: String = ""
+    @State var errorMessage: String?
     
     let drinkname: String
     let weight: Float
@@ -26,6 +26,7 @@ struct DrinkSettingsView: View {
     func saveDrink(group: String) async {
         do {
             try await networking.sendDrink(drinkname, weight: weight, group: group)
+            errorMessage=nil
         
         }
         catch {
