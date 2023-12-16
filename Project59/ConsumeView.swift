@@ -41,7 +41,7 @@ struct ConsumeView: View {
                     }
                     else if let drinks = networking.drinks {
                         ForEach(drinks, id: \.id) { drink in
-                            ConsumeDrinkView(drinkname: drink.drink).frame(width: 100, height: 100, alignment: .center)
+                            ConsumeDrinkView(drinkname: drink.drink).frame(minHeight: 100, maxHeight:170, alignment: .top)
                            
                         }
                     }
